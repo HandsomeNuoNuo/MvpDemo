@@ -1,0 +1,99 @@
+package com.dream.mvpdemo.presenter;
+
+import android.util.Log;
+
+import com.dream.mvpdemo.base.BasePresenter;
+import com.dream.mvpdemo.contract.LitePalContract;
+import com.dream.mvpdemo.model.LitePalModel;
+import com.dream.mvpdemo.model.bean.People;
+
+import java.util.List;
+
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.schedulers.Schedulers;
+
+/**
+ * LitePalPresenter
+ * Created by Administrator on 2018/5/7.
+ */
+
+public class LitePalPresenter extends BasePresenter<LitePalContract.View, LitePalContract.LitePalModel> implements LitePalContract.Presenter
+{
+
+    @Override
+    public void initModel()
+    {
+        model = new LitePalModel();
+    }
+
+    @Override
+    public void savePeople(String name, int age, String sex)
+    {
+        if (model.savePeople(name, age, sex) == true)
+        {
+            mView.saveOK();
+        } else
+        {
+            mView.saveFail();
+        }
+    }
+
+    @Override
+    public void getAllPeople()
+    {
+
+        Observable.create(new ObservableOnSubscribe<List<People>>()
+        {
+            @Override
+            public void subscribe(@NonNull ObservableEmitter<List<People>> emitter) throws Exception
+            {
+                List<People> list = model.getAllPeople();
+                if (list == null || list.size() == 0)
+                {
+                    emitter.onError(new Exception("没有数据"));
+                } else
+                {
+                    emitter.onNext(model.getAllPeople());
+                }
+                emitter.onComplete();
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(peoples ->
+                {
+                    mView.setView(peoples);
+                    Log.i("test", peoples.size() + "");
+                }, throwable ->
+                {
+                    ///throwable.printStackTrace();
+                    Log.e("test", throwable.getMessage());
+                });
+
+
+        Observable.create((ObservableOnSubscribe<List<People>>) emitter ->
+        {
+            List<People> list = model.getAllPeople();
+            if (list == null || list.size() == 0)
+            {
+                emitter.onError(new Exception("没有数据"));
+            } else
+            {
+                emitter.onNext(model.getAllPeople());
+            }
+            emitter.onComplete();
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(peoples ->
+                {
+                    mView.setView(peoples);
+                    Log.i("test", peoples.size() + "");
+                }, throwable ->
+                {
+                    ///throwable.printStackTrace();
+                    Log.e("test", throwable.getMessage());
+                });
+
+    }
+}

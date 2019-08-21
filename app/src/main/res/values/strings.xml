@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MvpDemo</string>
+    <string name="title_activity_jni">JNIActivity</string>
+</resources>
