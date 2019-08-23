@@ -30,7 +30,7 @@ public class House
         this.price = price;
     }
 
-    public static class Builder{
+    public static final class Builder{
         final List<String> windows = new ArrayList<>();
         String door;
         String step;
