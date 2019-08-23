@@ -1,11 +1,13 @@
 package com.dream.mvpdemo.ui.activity.main;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import com.dream.mvpdemo.R;
 import com.dream.mvpdemo.base.BaseActivity;
+import com.dream.mvpdemo.model.bean.House;
 import com.dream.mvpdemo.ui.activity.jnitest.JNIActivity;
 import com.dream.mvpdemo.ui.activity.litepal.LitePalActivity;
 import com.kotlin.KotlinActivity;
@@ -45,6 +47,13 @@ public class MainActivity extends BaseActivity
     protected void initView()
     {
         actionBar.setDisplayHomeAsUpEnabled(false);
+
+        House.Builder builder = new House.Builder();
+        builder.setDoor("我是一扇门").setWindow("我是一扇窗").setStep("我是一层楼梯").setPrice(20000);
+        House house = builder.build();
+
+        Log.i("test","房子的构造：" + house.door+"  "+house.window + "   "+ house.step);
+        Log.i("test","售价：" +house.price);
     }
 
     /**
