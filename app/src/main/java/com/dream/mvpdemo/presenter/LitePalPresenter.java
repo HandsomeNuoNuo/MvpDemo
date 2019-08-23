@@ -14,6 +14,8 @@ import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -23,6 +25,14 @@ import io.reactivex.schedulers.Schedulers;
 
 public class LitePalPresenter extends BasePresenter<LitePalContract.View, LitePalContract.LitePalModel> implements LitePalContract.Presenter
 {
+    CompositeDisposable compositeDisposable;
+
+    @Override
+    public void init()
+    {
+        Log.i("test", "init");
+        compositeDisposable = new CompositeDisposable();
+    }
 
     @Override
     public void initModel()
@@ -46,7 +56,7 @@ public class LitePalPresenter extends BasePresenter<LitePalContract.View, LitePa
     public void getAllPeople()
     {
 
-        Observable.create(new ObservableOnSubscribe<List<People>>()
+        Disposable disposable = Observable.create(new ObservableOnSubscribe<List<People>>()
         {
             @Override
             public void subscribe(@NonNull ObservableEmitter<List<People>> emitter) throws Exception
@@ -73,7 +83,7 @@ public class LitePalPresenter extends BasePresenter<LitePalContract.View, LitePa
                 });
 
 
-        Observable.create((ObservableOnSubscribe<List<People>>) emitter ->
+        Disposable disposable2 =  Observable.create((ObservableOnSubscribe<List<People>>) emitter ->
         {
             List<People> list = model.getAllPeople();
             if (list == null || list.size() == 0)
@@ -94,6 +104,11 @@ public class LitePalPresenter extends BasePresenter<LitePalContract.View, LitePa
                     ///throwable.printStackTrace();
                     Log.e("test", throwable.getMessage());
                 });
+
+
+        compositeDisposable.add(disposable);
+        compositeDisposable.add(disposable2);
+
 
     }
 }

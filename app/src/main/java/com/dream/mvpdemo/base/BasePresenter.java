@@ -10,6 +10,7 @@ public abstract class BasePresenter<V extends IBaseView ,M extends IBaseModel> i
     protected V mView;
 
      public BasePresenter(){
+         init();
          initModel();
     }
 
