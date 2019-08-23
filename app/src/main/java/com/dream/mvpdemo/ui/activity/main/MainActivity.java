@@ -49,7 +49,11 @@ public class MainActivity extends BaseActivity
         actionBar.setDisplayHomeAsUpEnabled(false);
 
         House.Builder builder = new House.Builder();
-        builder.setDoor("我是一扇门").setWindow("我是一扇窗").setStep("我是一层楼梯").setPrice(20000);
+        builder.setDoor("我是一扇门")
+                .addWindow("我是第一扇窗")
+                .addWindow("我是第二扇窗")
+                .setStep("我是一层楼梯")
+                .setPrice(20000);
         House house = builder.build();
 
         Log.i("test","房子的构造：" + house.door+"  "+house.window + "   "+ house.step);

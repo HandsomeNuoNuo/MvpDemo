@@ -1,4 +1,8 @@
 package com.dream.mvpdemo.model.bean;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /******************************************************************
  * @文件名称 : House
  * @文件作者 : 黄峰
@@ -12,21 +16,23 @@ public class House
 {
     private final String TAG="House";
     public  String door;
-    public  String window;
+    public  String window = "";
     public  String step;
     public  int price;
 
-    public House(String door, String window, String step, int price)
+    public House(String door, List<String> windows, String step, int price)
     {
         this.door = door;
-        this.window = window;
+        for (String w:windows){
+            this.window += w+" ";
+        }
         this.step = step;
         this.price = price;
     }
 
     public static class Builder{
+        final List<String> windows = new ArrayList<>();
         String door;
-        String window;
         String step;
         int price;
 
@@ -40,9 +46,9 @@ public class House
             return this;
         }
 
-        public Builder setWindow(String window)
+        public Builder addWindow(String window)
         {
-            this.window = window;
+            windows.add(window);
             return this;
         }
 
@@ -59,7 +65,7 @@ public class House
         }
 
         public House build(){
-            return new House(door,window,step,price);
+            return new House(door,windows,step,price);
         }
     }
 }
