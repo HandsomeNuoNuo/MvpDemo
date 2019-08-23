@@ -1,7 +1,5 @@
 package com.dream.mvpdemo.ui.activity.litepal;
 
-import android.support.annotation.Nullable;
-
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.dream.mvpdemo.R;
@@ -21,11 +19,21 @@ public class PeopleAdapter extends BaseQuickAdapter<People, BaseViewHolder>
 {
     private final String TAG = "PeopleAdapter";
 
-    public PeopleAdapter(@Nullable List<People> data)
+
+    public PeopleAdapter()
     {
-        super(R.layout.list_item_people, data);
+        super(R.layout.list_item_people);
     }
 
+    public void setData(List<People> list){
+        this.setNewData(list);
+
+    }
+
+    public void addOneData(People people){
+        this.addData(people);
+
+    }
 
     /**
      * Implement this method and use the helper to adapt the view to the given item.

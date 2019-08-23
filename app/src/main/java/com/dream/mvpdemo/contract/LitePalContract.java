@@ -16,14 +16,14 @@ public interface LitePalContract
 {
     interface LitePalModel extends IBaseModel
     {
-        boolean savePeople(String name,int age,String sex);
+        People savePeople(String name,int age,String sex);
         List<People> getAllPeople();
     }
 
 
     interface View extends IBaseView
     {
-        void saveOK();
+        void saveOK(People people);
         void saveFail();
         void setView(List<People> list);
     }

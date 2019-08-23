@@ -10,10 +10,8 @@ import com.dream.mvpdemo.model.bean.People;
 import java.util.List;
 
 import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
@@ -25,7 +23,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class LitePalPresenter extends BasePresenter<LitePalContract.View, LitePalContract.LitePalModel> implements LitePalContract.Presenter
 {
-    CompositeDisposable compositeDisposable;
+    private CompositeDisposable compositeDisposable;
 
     @Override
     public void init()
@@ -43,9 +41,10 @@ public class LitePalPresenter extends BasePresenter<LitePalContract.View, LitePa
     @Override
     public void savePeople(String name, int age, String sex)
     {
-        if (model.savePeople(name, age, sex) == true)
+        People people = model.savePeople(name, age, sex);
+        if (people != null)
         {
-            mView.saveOK();
+            mView.saveOK(people);
         } else
         {
             mView.saveFail();
@@ -56,31 +55,31 @@ public class LitePalPresenter extends BasePresenter<LitePalContract.View, LitePa
     public void getAllPeople()
     {
 
-        Disposable disposable = Observable.create(new ObservableOnSubscribe<List<People>>()
-        {
-            @Override
-            public void subscribe(@NonNull ObservableEmitter<List<People>> emitter) throws Exception
-            {
-                List<People> list = model.getAllPeople();
-                if (list == null || list.size() == 0)
-                {
-                    emitter.onError(new Exception("没有数据"));
-                } else
-                {
-                    emitter.onNext(model.getAllPeople());
-                }
-                emitter.onComplete();
-            }
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-                .subscribe(peoples ->
-                {
-                    mView.setView(peoples);
-                    Log.i("test", peoples.size() + "");
-                }, throwable ->
-                {
-                    ///throwable.printStackTrace();
-                    Log.e("test", throwable.getMessage());
-                });
+//        Disposable disposable = Observable.create(new ObservableOnSubscribe<List<People>>()
+//        {
+//            @Override
+//            public void subscribe(@NonNull ObservableEmitter<List<People>> emitter) throws Exception
+//            {
+//                List<People> list = model.getAllPeople();
+//                if (list == null || list.size() == 0)
+//                {
+//                    emitter.onError(new Exception("没有数据"));
+//                } else
+//                {
+//                    emitter.onNext(model.getAllPeople());
+//                }
+//                emitter.onComplete();
+//            }
+//        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(peoples ->
+//                {
+//                    mView.setView(peoples);
+//                    Log.i("test", peoples.size() + "");
+//                }, throwable ->
+//                {
+//                    ///throwable.printStackTrace();
+//                    Log.e("test", throwable.getMessage());
+//                });
 
 
         Disposable disposable2 =  Observable.create((ObservableOnSubscribe<List<People>>) emitter ->
@@ -106,7 +105,7 @@ public class LitePalPresenter extends BasePresenter<LitePalContract.View, LitePa
                 });
 
 
-        compositeDisposable.add(disposable);
+   //     compositeDisposable.add(disposable);
         compositeDisposable.add(disposable2);
 
 

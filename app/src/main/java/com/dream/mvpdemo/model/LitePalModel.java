@@ -17,12 +17,15 @@ public class LitePalModel implements LitePalContract.LitePalModel{
     }
 
     @Override
-    public boolean savePeople(String name,int age, String sex){
+    public People savePeople(String name,int age, String sex){
         People people = new People();
         people.setName(name);
         people.setAge(age);
         people.setSex(sex);
-        return DbHelper.getInstance().savePeople(people);
+        if(DbHelper.getInstance().savePeople(people))
+        return people;
+
+        return null;
     }
 
     @Override

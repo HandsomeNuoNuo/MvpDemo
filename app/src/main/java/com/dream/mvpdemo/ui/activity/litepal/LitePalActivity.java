@@ -39,6 +39,10 @@ public class LitePalActivity extends BaseActivity<LitePalPresenter> implements L
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
 
+        mAdapter = new PeopleAdapter();
+        mAdapter.setLoadMoreView(new SimpleLoadMoreView());
+        // recyclerView.setAdapter(mAdapter);
+        mAdapter.bindToRecyclerView(recyclerView);
         mPresenter.getAllPeople();
     }
 
@@ -49,9 +53,10 @@ public class LitePalActivity extends BaseActivity<LitePalPresenter> implements L
     }
 
     @Override
-    public void saveOK()
+    public void saveOK(People people)
     {
         //Toast.makeText(mContext,"保存成功",Toast.LENGTH_SHORT).show();
+        mAdapter.addOneData(people);
         showSnackbar("保存成功");
     }
 
@@ -64,10 +69,7 @@ public class LitePalActivity extends BaseActivity<LitePalPresenter> implements L
     @Override
     public void setView(List<People> list)
     {
-        mAdapter = new PeopleAdapter(list);
-       // recyclerView.setAdapter(mAdapter);
-        mAdapter.setLoadMoreView(new SimpleLoadMoreView());
-        mAdapter.bindToRecyclerView(recyclerView);
+        mAdapter.setData(list);
     }
 
     public void save(View v)
