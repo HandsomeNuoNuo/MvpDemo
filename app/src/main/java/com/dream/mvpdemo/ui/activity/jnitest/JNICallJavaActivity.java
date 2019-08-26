@@ -34,7 +34,7 @@ public class JNICallJavaActivity extends BaseActivity
         Log.i("test"," before : JniProtocol.stringJNI" + JniProtocol.stringJNI);
 
         Log.i("test","doing--------------------------------------");
-        JniProtocol.getInstance().cppToJava();
+      //  JniProtocol.getInstance().cppToJava();
         Log.i("test"," after : JniProtocol.stringJNI" + JniProtocol.stringJNI);
     }
 

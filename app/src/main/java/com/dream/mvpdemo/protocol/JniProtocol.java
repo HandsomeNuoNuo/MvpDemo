@@ -22,15 +22,10 @@ public class JniProtocol
         System.loadLibrary("hf");
     }
 
-    public  int operation() {
-        return 2 / 0;
-    }
 
     public native String stringFromJNI();
 
-    public native void cppToJava();
 
-    public native void cppToasda();
 
     public static String stringJNI = "这是原来的String";
 
