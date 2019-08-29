@@ -22,4 +22,5 @@ public class MyApplication extends LitePalApplication
         if (instance == null) instance = new MyApplication();
         return instance;
     }
+
 }

@@ -7,6 +7,7 @@ import android.widget.Button;
 
 import com.dream.mvpdemo.R;
 import com.dream.mvpdemo.base.BaseActivity;
+import com.dream.mvpdemo.manager.ThreadPoolManager;
 import com.dream.mvpdemo.model.bean.House;
 import com.dream.mvpdemo.ui.activity.jnitest.JNIActivity;
 import com.dream.mvpdemo.ui.activity.litepal.LitePalActivity;
@@ -58,6 +59,7 @@ public class MainActivity extends BaseActivity
 
         Log.i("test","房子的构造：" + house.door+"  "+house.window + "   "+ house.step);
         Log.i("test","售价：" +house.price);
+
     }
 
     /**
@@ -87,5 +89,12 @@ public class MainActivity extends BaseActivity
                 startActivity(new Intent(mContext, JNIActivity.class));
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        ThreadPoolManager.getInstance().release();
+        super.onDestroy();
     }
 }
