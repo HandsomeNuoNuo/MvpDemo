@@ -30,6 +30,8 @@
         </activity>
         <activity android:name=".ui.activity.jnitest.JNICallJavaActivity">
         </activity>
+        <activity android:name=".ui.activity.surface.ECGActivity">
+        </activity>
     </application>
 
 </manifest>
