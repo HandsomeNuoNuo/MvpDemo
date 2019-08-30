@@ -10,6 +10,7 @@ import com.dream.mvpdemo.base.BaseActivity;
 import com.dream.mvpdemo.model.bean.House;
 import com.dream.mvpdemo.ui.activity.jnitest.JNIActivity;
 import com.dream.mvpdemo.ui.activity.litepal.LitePalActivity;
+import com.dream.mvpdemo.ui.activity.sdktest.SDKTestActivity;
 import com.dream.mvpdemo.ui.activity.surface.ECGActivity;
 import com.kotlin.KotlinActivity;
 
@@ -74,7 +75,7 @@ public class MainActivity extends BaseActivity
     }
 
 
-    @OnClick({R.id.btn_litepal, R.id.btn_kotlin , R.id.btn_jni,R.id.btn_ecg})
+    @OnClick({R.id.btn_litepal, R.id.btn_kotlin , R.id.btn_jni,R.id.btn_ecg,R.id.btn_sdk})
     public void onViewClicked(View view)
     {
         switch (view.getId())
@@ -90,6 +91,9 @@ public class MainActivity extends BaseActivity
                 break;
             case R.id.btn_ecg:
                 startActivity(new Intent(mContext, ECGActivity.class));
+                break;
+            case R.id.btn_sdk:
+                startActivity(new Intent(mContext, SDKTestActivity.class));
                 break;
         }
     }

@@ -12,7 +12,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+
+        <meta-data android:name="SDKTest" android:value="zheshiwodemiyao1234567890hahaha"></meta-data>
+
         <activity android:name=".ui.activity.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -31,6 +35,8 @@
         <activity android:name=".ui.activity.jnitest.JNICallJavaActivity">
         </activity>
         <activity android:name=".ui.activity.surface.ECGActivity">
+        </activity>
+        <activity android:name=".ui.activity.sdktest.SDKTestActivity">
         </activity>
     </application>
 
