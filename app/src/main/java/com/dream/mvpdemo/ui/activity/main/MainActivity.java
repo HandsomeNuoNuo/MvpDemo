@@ -1,6 +1,8 @@
 package com.dream.mvpdemo.ui.activity.main;
 
+import android.Manifest;
 import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +18,8 @@ import com.kotlin.KotlinActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import permissions.dispatcher.NeedsPermission;
+import permissions.dispatcher.RuntimePermissions;
 
 /******************************************************************
  * @文件名称 : MainActivity
@@ -25,6 +29,7 @@ import butterknife.OnClick;
  * @版权声明 : Copyright (C) 2008-2016 北斗天汇（北京）科技有限公司
  * @修改历史 : 2019/7/19
  ******************************************************************/
+@RuntimePermissions
 public class MainActivity extends BaseActivity
 {
     @BindView(R.id.btn_litepal)
@@ -58,8 +63,14 @@ public class MainActivity extends BaseActivity
                 .setPrice(20000);
         House house = builder.build();
 
-        Log.i("test","房子的构造：" + house.door+"  "+house.window + "   "+ house.step);
-        Log.i("test","售价：" +house.price);
+        Log.i("test", "房子的构造：" + house.door + "  " + house.window + "   " + house.step);
+        Log.i("test", "售价：" + house.price);
+        MainActivityPermissionsDispatcher.getPremissionWithPermissionCheck(this);
+    }
+
+    @NeedsPermission({Manifest.permission.CALL_PHONE, Manifest.permission.WRITE_EXTERNAL_STORAGE})
+    public void getPremission()
+    {
 
     }
 
@@ -75,7 +86,7 @@ public class MainActivity extends BaseActivity
     }
 
 
-    @OnClick({R.id.btn_litepal, R.id.btn_kotlin , R.id.btn_jni,R.id.btn_ecg,R.id.btn_sdk})
+    @OnClick({R.id.btn_litepal, R.id.btn_kotlin, R.id.btn_jni, R.id.btn_ecg, R.id.btn_sdk, R.id.btn_per})
     public void onViewClicked(View view)
     {
         switch (view.getId())
@@ -94,6 +105,12 @@ public class MainActivity extends BaseActivity
                 break;
             case R.id.btn_sdk:
                 startActivity(new Intent(mContext, SDKTestActivity.class));
+                break;
+            case R.id.btn_per:
+                Intent intent = new Intent(Intent.ACTION_CALL);
+                Uri data = Uri.parse("tel:10086");
+                intent.setData(data);
+                startActivity(intent);
                 break;
         }
     }
