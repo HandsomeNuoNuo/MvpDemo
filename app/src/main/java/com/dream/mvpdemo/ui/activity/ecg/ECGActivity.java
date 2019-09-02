@@ -1,4 +1,4 @@
-package com.dream.mvpdemo.ui.activity.surface;
+package com.dream.mvpdemo.ui.activity.ecg;
 
 import android.util.Log;
 
@@ -81,7 +81,7 @@ public class ECGActivity extends BaseActivity
                 ecgView.pushData(i);
                 try
                 {
-                    sleep(100);
+                    sleep(60);
                 } catch (InterruptedException e)
                 {
                     e.printStackTrace();

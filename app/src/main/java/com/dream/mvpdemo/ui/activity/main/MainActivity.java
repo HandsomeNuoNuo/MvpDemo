@@ -13,7 +13,7 @@ import com.dream.mvpdemo.model.bean.House;
 import com.dream.mvpdemo.ui.activity.jnitest.JNIActivity;
 import com.dream.mvpdemo.ui.activity.litepal.LitePalActivity;
 import com.dream.mvpdemo.ui.activity.sdktest.SDKTestActivity;
-import com.dream.mvpdemo.ui.activity.surface.ECGActivity;
+import com.dream.mvpdemo.ui.activity.ecg.ECGActivity;
 import com.kotlin.KotlinActivity;
 
 import butterknife.BindView;

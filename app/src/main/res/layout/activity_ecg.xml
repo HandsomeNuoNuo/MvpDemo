@@ -27,7 +27,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
 
-    <com.dream.mvpdemo.ui.activity.surface.ECGView
+    <com.dream.mvpdemo.ui.activity.ecg.ECGView
         android:id="@+id/ecgView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
