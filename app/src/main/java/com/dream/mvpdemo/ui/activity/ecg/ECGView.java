@@ -180,7 +180,7 @@ public class ECGView extends SurfaceView implements SurfaceHolder.Callback, Runn
                 x = 0;
             } else
             {
-                Log.i(TAG,"queue.size() =" + queue.size());
+               // Log.i(TAG,"queue.size() =" + queue.size());
                 if (queue.size() > 0)
                 {
                     draw(x, queue.poll());

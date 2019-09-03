@@ -330,7 +330,7 @@ public class ECGActivity extends BaseActivity
                 {
                     if (!run) break;
                     data = (Integer.parseInt(data_source.get(i)) - 2048) * (-1);
-                    Log.i(TAG, "data = " + data);
+                   // Log.i(TAG, "data = " + data);
                     ecgView.pushData(data);
                     try
                     {
