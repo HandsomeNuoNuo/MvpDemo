@@ -35,7 +35,8 @@
         </activity>
         <activity android:name=".ui.activity.jnitest.JNICallJavaActivity">
         </activity>
-        <activity android:name=".ui.activity.ecg.ECGActivity">
+        <activity android:name=".ui.activity.ecg.ECGActivity"
+            android:launchMode="singleTask">
         </activity>
         <activity android:name=".ui.activity.sdktest.SDKTestActivity">
         </activity>

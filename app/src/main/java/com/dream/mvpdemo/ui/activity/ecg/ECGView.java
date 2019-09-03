@@ -128,13 +128,14 @@ public class ECGView extends SurfaceView implements SurfaceHolder.Callback, Runn
 
         mPaint = new Paint();
         mPaint.setColor(Color.BLACK);
+        mPaint.setStrokeWidth(1.5f);
         mPaint.setAntiAlias(true);
         mPaint.setStyle(Paint.Style.STROKE);
 
         path = new Path();
 
-         gridPaint = new Paint();
-         backPaint = new Paint();
+        gridPaint = new Paint();
+        backPaint = new Paint();
         backPaint.setColor(0xFFFCF8FA);
         backPaint.setStyle(Paint.Style.FILL);
         backPaint.setStrokeWidth(BOX_RECT_WIDTH);
@@ -209,6 +210,7 @@ public class ECGView extends SurfaceView implements SurfaceHolder.Callback, Runn
     @SuppressLint("ResourceAsColor")
     private void resetView()
     {
+        path.reset();
         path.moveTo(0, height / 2);
     }
 
