@@ -31,6 +31,8 @@ public class ECGView extends SurfaceView implements SurfaceHolder.Callback, Runn
 
     private volatile boolean isDrawing = false;
 
+    private volatile boolean canPoll = false;//解决模拟数据在黑屏的情况下任然poll数据的问题
+
     private Canvas canvas;
 
     private SurfaceHolder surfaceHolder;
@@ -85,11 +87,14 @@ public class ECGView extends SurfaceView implements SurfaceHolder.Callback, Runn
         surfaceHolder = getHolder();
         surfaceHolder.addCallback(this);
         setFocusable(true);
+        canPoll = true;
     }
 
     public void pushData(float data)
     {
-        queue.add(data);
+        if(canPoll){
+            queue.add(data);
+        }
     }
 
     private float MM2Pixel(int milli)
@@ -157,6 +162,7 @@ public class ECGView extends SurfaceView implements SurfaceHolder.Callback, Runn
     {
         Log.i(TAG, "surfaceDestroyed");
         isDrawing = false;
+        canPoll = false;
         surfaceHolder.removeCallback(this);
     }
 
@@ -174,7 +180,7 @@ public class ECGView extends SurfaceView implements SurfaceHolder.Callback, Runn
                 x = 0;
             } else
             {
-               // Log.i(TAG,"queue.size() =" + queue.size());
+                Log.i(TAG,"queue.size() =" + queue.size());
                 if (queue.size() > 0)
                 {
                     draw(x, queue.poll());
