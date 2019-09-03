@@ -36,7 +36,8 @@
         <activity android:name=".ui.activity.jnitest.JNICallJavaActivity">
         </activity>
         <activity android:name=".ui.activity.ecg.ECGActivity"
-            android:launchMode="singleTask">
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape">
         </activity>
         <activity android:name=".ui.activity.sdktest.SDKTestActivity">
         </activity>

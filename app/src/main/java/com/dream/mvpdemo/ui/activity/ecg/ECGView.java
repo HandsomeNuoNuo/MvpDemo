@@ -54,7 +54,7 @@ public class ECGView extends SurfaceView implements SurfaceHolder.Callback, Runn
     private int maxLineH,maxLineW;
     private Paint gridPaint,backPaint, mPaint;
 
-    private static final ConcurrentLinkedQueue<Integer> queue = new ConcurrentLinkedQueue();
+    private static final ConcurrentLinkedQueue<Float> queue = new ConcurrentLinkedQueue();
 
     public ECGView(Context context)
     {
@@ -87,7 +87,7 @@ public class ECGView extends SurfaceView implements SurfaceHolder.Callback, Runn
         setFocusable(true);
     }
 
-    public void pushData(int data)
+    public void pushData(float data)
     {
         queue.add(data);
     }
@@ -128,7 +128,7 @@ public class ECGView extends SurfaceView implements SurfaceHolder.Callback, Runn
 
         mPaint = new Paint();
         mPaint.setColor(Color.BLACK);
-        mPaint.setStrokeWidth(1.5f);
+        mPaint.setStrokeWidth(2f);
         mPaint.setAntiAlias(true);
         mPaint.setStyle(Paint.Style.STROKE);
 
@@ -178,13 +178,13 @@ public class ECGView extends SurfaceView implements SurfaceHolder.Callback, Runn
                 if (queue.size() > 0)
                 {
                     draw(x, queue.poll());
-                    x += 10;
+                    x += 3;
                 }
             }
         }
     }
 
-    private void draw(int x, int y)
+    private void draw(float x, float y)
     {
         try
         {
@@ -192,7 +192,7 @@ public class ECGView extends SurfaceView implements SurfaceHolder.Callback, Runn
             //执行具体的绘制操作
             drawGrid(canvas);
            // Log.i(TAG, " x = " + x);
-            path.lineTo(x, height / 2 - y);
+            path.lineTo(x, height / 2 + y);
             canvas.drawPath(path, mPaint);
         } catch (Exception e)
         {
