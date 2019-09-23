@@ -10,6 +10,7 @@ import android.widget.Button;
 import com.dream.mvpdemo.R;
 import com.dream.mvpdemo.base.BaseActivity;
 import com.dream.mvpdemo.model.bean.House;
+import com.dream.mvpdemo.ui.activity.ble.scan.BleListActivity;
 import com.dream.mvpdemo.ui.activity.jnitest.JNIActivity;
 import com.dream.mvpdemo.ui.activity.litepal.LitePalActivity;
 import com.dream.mvpdemo.ui.activity.sdktest.SDKTestActivity;
@@ -86,7 +87,7 @@ public class MainActivity extends BaseActivity
     }
 
 
-    @OnClick({R.id.btn_litepal, R.id.btn_kotlin, R.id.btn_jni, R.id.btn_ecg, R.id.btn_sdk, R.id.btn_per})
+    @OnClick({R.id.btn_litepal, R.id.btn_kotlin, R.id.btn_jni, R.id.btn_ecg, R.id.btn_sdk, R.id.btn_per,R.id.btn_ble})
     public void onViewClicked(View view)
     {
         switch (view.getId())
@@ -111,6 +112,9 @@ public class MainActivity extends BaseActivity
                 Uri data = Uri.parse("tel:10086");
                 intent.setData(data);
                 startActivity(intent);
+                break;
+            case R.id.btn_ble:
+                startActivity(new Intent(mContext, BleListActivity.class));
                 break;
         }
     }

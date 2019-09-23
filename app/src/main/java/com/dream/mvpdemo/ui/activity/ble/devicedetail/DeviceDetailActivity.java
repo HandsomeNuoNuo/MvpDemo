@@ -1,17 +1,18 @@
-package com.dream.mvpdemo.ui.activity.ble;
+package com.dream.mvpdemo.ui.activity.ble.devicedetail;
 
+import com.dream.mvpdemo.R;
 import com.dream.mvpdemo.base.BaseActivity;
 
 /**********************************
- * @Name: BleTestActivity
+ * @Name: DeviceDetailActivity
  * @Copyright： 个人版权所有
- * @CreateDate： 2019/9/23 15:12
+ * @CreateDate： 2019/9/23 20:57
  * @author: HuangFeng
  * @Version： 1.0
  * @Describe:
  *
  **********************************/
-public class BleTestActivity extends BaseActivity {
+public class DeviceDetailActivity extends BaseActivity<DeviceDetailPresenter> implements DeviceDetailContract.View{
     @Override
     protected void initPresenter() {
 
@@ -24,6 +25,6 @@ public class BleTestActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {
-        return 0;
+        return R.layout.activity_bledetail;
     }
 }

@@ -1,7 +1,7 @@
-package com.dream.mvpdemo.ui.activity.ble;
+package com.dream.mvpdemo.ui.activity.ble.scan;
 
 /**********************************
- * @Name: BleTestModel
+ * @Name: BleListModel
  * @Copyright： 个人版权所有
  * @CreateDate： 2019/9/23 15:16
  * @author: HuangFeng
@@ -9,5 +9,5 @@ package com.dream.mvpdemo.ui.activity.ble;
  * @Describe:
  *
  **********************************/
-public class BleTestModel {
+public class BleListModel implements BleListContract.Model {
 }
