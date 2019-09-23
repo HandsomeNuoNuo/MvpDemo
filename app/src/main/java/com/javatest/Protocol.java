@@ -1,7 +1,7 @@
 package com.javatest;
 
 /**********************************
- * @Name: protocol
+ * @Name: Protocol
  * @Copyright： 个人版权所有
  * @CreateDate： 2019/9/23 13:24
  * @author: HuangFeng
@@ -9,7 +9,7 @@ package com.javatest;
  * @Describe:
  *
  **********************************/
-public class protocol {
+public class Protocol {
 
     public static void main(String args[]) {
         byte[] data = {(byte) 0xF4, (byte) 0xFF};
