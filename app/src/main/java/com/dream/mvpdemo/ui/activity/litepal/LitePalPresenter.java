@@ -1,10 +1,8 @@
-package com.dream.mvpdemo.presenter;
+package com.dream.mvpdemo.ui.activity.litepal;
 
 import android.util.Log;
 
 import com.dream.mvpdemo.base.BasePresenter;
-import com.dream.mvpdemo.contract.LitePalContract;
-import com.dream.mvpdemo.model.LitePalModel;
 import com.dream.mvpdemo.model.bean.People;
 
 import java.util.List;

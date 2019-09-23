@@ -1,4 +1,4 @@
-package com.dream.mvpdemo.contract;
+package com.dream.mvpdemo.ui.activity.litepal;
 
 import com.dream.mvpdemo.base.IBaseModel;
 import com.dream.mvpdemo.base.IBasePresenter;

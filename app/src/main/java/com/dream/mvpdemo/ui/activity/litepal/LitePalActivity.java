@@ -8,9 +8,7 @@ import android.widget.Toast;
 import com.chad.library.adapter.base.loadmore.SimpleLoadMoreView;
 import com.dream.mvpdemo.R;
 import com.dream.mvpdemo.base.BaseActivity;
-import com.dream.mvpdemo.contract.LitePalContract;
 import com.dream.mvpdemo.model.bean.People;
-import com.dream.mvpdemo.presenter.LitePalPresenter;
 
 import java.util.List;
 

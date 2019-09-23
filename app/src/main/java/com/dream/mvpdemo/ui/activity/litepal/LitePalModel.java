@@ -1,6 +1,5 @@
-package com.dream.mvpdemo.model;
+package com.dream.mvpdemo.ui.activity.litepal;
 
-import com.dream.mvpdemo.contract.LitePalContract;
 import com.dream.mvpdemo.model.bean.People;
 import com.dream.mvpdemo.model.db.DbHelper;
 
