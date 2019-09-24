@@ -2,6 +2,7 @@ package com.dream.mvpdemo.ui.activity.ble.scan;
 
 import android.Manifest;
 import android.bluetooth.BluetoothDevice;
+import android.content.Intent;
 import android.widget.Button;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.chad.library.adapter.base.loadmore.SimpleLoadMoreView;
 import com.dream.mvpdemo.R;
 import com.dream.mvpdemo.base.BaseActivity;
+import com.dream.mvpdemo.ui.activity.ble.devicedetail.DeviceDetailActivity;
 
 import java.util.List;
 
@@ -57,7 +59,7 @@ public class BleListActivity extends BaseActivity<BleListPresenter> implements B
         mAdapter.bindToRecyclerView(recyclerView);
 
         mAdapter.setOnItemChildClickListener((adapter, view, position) -> {
-
+            startActivity(new Intent(mContext, DeviceDetailActivity.class));
         });
     }
 
