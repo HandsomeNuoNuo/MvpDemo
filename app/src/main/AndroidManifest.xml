@@ -49,6 +49,9 @@
         </activity>
         <activity android:name=".ui.activity.ble.devicedetail.DeviceDetailActivity">
         </activity>
+
+
+        <service android:name=".ui.activity.ble.devicedetail.BleService"/>
     </application>
 
 </manifest>
