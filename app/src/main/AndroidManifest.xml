@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.BLUETOOTH"/>
-    v<uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
 
     <application
         android:name=".MyApplication"
@@ -17,6 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:hardwareAccelerated ="true"
         tools:ignore="GoogleAppIndexingWarning">
 
         <meta-data android:name="SDKTest" android:value="zheshiwodemiyao1234567890hahaha"></meta-data>
@@ -48,6 +49,8 @@
         <activity android:name=".ui.activity.ble.scan.BleListActivity">
         </activity>
         <activity android:name=".ui.activity.ble.devicedetail.DeviceDetailActivity">
+        </activity>
+        <activity android:name=".ui.activity.viewtest.ViewTestActivity">
         </activity>
 
 

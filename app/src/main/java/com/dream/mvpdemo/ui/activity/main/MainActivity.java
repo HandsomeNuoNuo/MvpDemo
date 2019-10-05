@@ -15,6 +15,7 @@ import com.dream.mvpdemo.ui.activity.jnitest.JNIActivity;
 import com.dream.mvpdemo.ui.activity.litepal.LitePalActivity;
 import com.dream.mvpdemo.ui.activity.sdktest.SDKTestActivity;
 import com.dream.mvpdemo.ui.activity.ecg.ECGActivity;
+import com.dream.mvpdemo.ui.activity.viewtest.ViewTestActivity;
 import com.kotlin.KotlinActivity;
 
 import butterknife.BindView;
@@ -87,7 +88,7 @@ public class MainActivity extends BaseActivity
     }
 
 
-    @OnClick({R.id.btn_litepal, R.id.btn_kotlin, R.id.btn_jni, R.id.btn_ecg, R.id.btn_sdk, R.id.btn_per,R.id.btn_ble})
+    @OnClick({R.id.btn_litepal, R.id.btn_kotlin, R.id.btn_jni, R.id.btn_ecg, R.id.btn_sdk, R.id.btn_per,R.id.btn_ble,R.id.btn_viewtest})
     public void onViewClicked(View view)
     {
         switch (view.getId())
@@ -115,6 +116,9 @@ public class MainActivity extends BaseActivity
                 break;
             case R.id.btn_ble:
                 startActivity(new Intent(mContext, BleListActivity.class));
+                break;
+            case R.id.btn_viewtest:
+                startActivity(new Intent(mContext, ViewTestActivity.class));
                 break;
         }
     }

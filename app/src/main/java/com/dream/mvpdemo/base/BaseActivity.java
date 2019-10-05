@@ -31,7 +31,7 @@ public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatAc
         setContentView(getLayoutId());
         ButterKnife.bind(this);
         toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("");
+        toolbar.setTitle(" ");
         setSupportActionBar(toolbar);
         actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
