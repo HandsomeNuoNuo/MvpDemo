@@ -65,6 +65,8 @@ dependencies {
     implementation "org.jetbrains.anko:anko-common:$anko_version"
    // implementation project(path: ':mylibrary')
 
+    implementation "com.hf:mylibrary:1.0.0"
+
     implementation "org.permissionsdispatcher:permissionsdispatcher:4.5.0"
     annotationProcessor "org.permissionsdispatcher:permissionsdispatcher-processor:4.5.0"
     implementation project(path:':ncalendar')

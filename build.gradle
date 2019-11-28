@@ -22,6 +22,10 @@ allprojects {
         jcenter()
         maven { url "https://jitpack.io" }
         maven { url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/' }
+        //本地Maven仓库地址
+        maven {
+            url 'file://D://Android//Android Project//MvpDemo//repository'
+        }
     }
 }
 
