@@ -51,8 +51,9 @@
         <activity android:name=".ui.activity.ble.devicedetail.DeviceDetailActivity">
         </activity>
         <activity android:name=".ui.activity.viewtest.ViewTestActivity">
+    </activity>
+        <activity android:name=".ui.activity.share.ShareActivity">
         </activity>
-
 
         <service android:name=".ui.activity.ble.devicedetail.BleService"/>
     </application>

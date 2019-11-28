@@ -83,6 +83,7 @@ public class ECGView extends SurfaceView implements SurfaceHolder.Callback, Runn
         this.getHolder().setFormat(PixelFormat.TRANSLUCENT);
 
         dpi = this.getResources().getDisplayMetrics().xdpi;
+        Log.e("test","dpi = "+ dpi);
         mm_1 = this.MM2Pixel(1);
         surfaceHolder = getHolder();
         surfaceHolder.addCallback(this);

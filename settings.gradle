@@ -1,1 +1,1 @@
-include ':app' ,':ncalendar'//,':mylibrary'
+include ':app' ,':ncalendar',':mylibrary'
