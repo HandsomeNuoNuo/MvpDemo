@@ -23,9 +23,15 @@ allprojects {
         maven { url "https://jitpack.io" }
         maven { url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/' }
         //本地Maven仓库地址
+//        maven {
+//            url 'file://D://Android//Android Project//MvpDemo//repository'
+//        }
+        //远程Maven仓库地址
         maven {
-            url 'file://D://Android//Android Project//MvpDemo//repository'
+            url 'http://101.132.108.35:8100/nexus/content/repositories/nuonuo/'
         }
+
+
     }
 }
 
