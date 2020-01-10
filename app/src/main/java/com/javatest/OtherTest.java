@@ -51,19 +51,40 @@ public class OtherTest {
             e.printStackTrace();
         }
         try {
-//            DataInputStream dataInputStream = new DataInputStream(new FileInputStream("D://1.txt"));
-//            System.out.println(dataInputStream.readChar());
-//            dataInputStream.close();
-
-            File file =new File("D://1.txt");
-            InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream(file));
-            char [] c = new char[10];
-            StringBuilder buffer = new StringBuilder();
-            while (inputStreamReader.read(c) != -1){
-                buffer.append(c);
-                c = new char[10];
+            File file =new File("D://1298_10098_20191231142359_evaluate.etg");
+            DataInputStream dataInputStream = new DataInputStream(new FileInputStream(file));
+            while (true){
+                int f = dataInputStream.readInt();
+                System.out.println("f= " + f);
+                dataInputStream.readInt();
+               dataInputStream.readInt();
+                dataInputStream.readInt();
+                dataInputStream.readInt();
+                dataInputStream.readInt();
+                 dataInputStream.readInt();
+              dataInputStream.readInt();
+             dataInputStream.readInt();
+                dataInputStream.readChar();
+               dataInputStream.readDouble();
+             dataInputStream.readFloat();
+                dataInputStream.readFloat();
+                 dataInputStream.readFloat();
+              dataInputStream.readFloat();
+               dataInputStream.readInt();
+               dataInputStream.readInt();
+                dataInputStream.readDouble();
             }
-            System.out.println(buffer.toString());
+           // dataInputStream.close();
+
+//            File file =new File("D://1.txt");
+//            InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream(file));
+//            char [] c = new char[10];
+//            StringBuilder buffer = new StringBuilder();
+//            while (inputStreamReader.read(c) != -1){
+//                buffer.append(c);
+//                c = new char[10];
+//            }
+//            System.out.println(buffer.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }

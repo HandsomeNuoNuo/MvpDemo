@@ -19,13 +19,15 @@ public class JniProtocol
     }
 
     static {
+        //System.loadLibrary("hf");
+
         System.loadLibrary("hf");
     }
 
 
     public native String stringFromJNI();
 
-
+    public native int[] testArray(int[] test ,int length);
 
     public static String stringJNI = "这是原来的String";
 

@@ -3,10 +3,12 @@ package com.dream.mvpdemo.ui.activity.main;
 import android.Manifest;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.dream.mvpdemo.MyApplication;
 import com.dream.mvpdemo.R;
 import com.dream.mvpdemo.base.BaseActivity;
 import com.dream.mvpdemo.model.bean.House;
@@ -20,6 +22,11 @@ import com.dream.mvpdemo.ui.activity.viewtest.ViewTestActivity;
 import com.kotlin.KotlinActivity;
 
 import org.litepal.crud.SaveHandler;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.math.BigInteger;
+import java.security.MessageDigest;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -91,7 +98,8 @@ public class MainActivity extends BaseActivity
     }
 
 
-    @OnClick({R.id.btn_litepal, R.id.btn_kotlin, R.id.btn_jni, R.id.btn_ecg, R.id.btn_sdk, R.id.btn_per,R.id.btn_ble,R.id.btn_viewtest,R.id.btn_share})
+    @OnClick({R.id.btn_litepal, R.id.btn_kotlin, R.id.btn_jni, R.id.btn_ecg, R.id.btn_sdk,
+            R.id.btn_per,R.id.btn_ble,R.id.btn_viewtest,R.id.btn_share,R.id.btn_check})
     public void onViewClicked(View view)
     {
         switch (view.getId())
@@ -126,7 +134,55 @@ public class MainActivity extends BaseActivity
             case R.id.btn_share:
                 startActivity(new Intent(mContext, ShareActivity.class));
                 break;
+            case R.id.btn_check:
+                checkApkSha();
+                break;
         }
+    }
+
+    public static boolean checkApkSha(){
+
+        String apkPath = Environment.getExternalStorageDirectory().getAbsolutePath()+"/mangshebt.apk";
+        Log.e("test","apkPath = " + apkPath);
+
+        MessageDigest msgDigest = null;
+
+        try {
+
+            msgDigest = MessageDigest.getInstance("SHA-1");
+
+            byte[] bytes = new byte[1024];
+
+            int byteCount;
+
+            FileInputStream fis = new FileInputStream(new File(apkPath));
+
+            while ((byteCount = fis.read(bytes)) > 0)
+
+            {
+
+                msgDigest.update(bytes, 0, byteCount);
+
+            }
+
+            BigInteger bi = new BigInteger(1, msgDigest.digest());
+
+            String sha = bi.toString(16);
+            Log.i("checkApkSha", "apk sha=" + sha);
+
+            fis.close();
+
+//            if(MyApplication.getInstance().getString(R.string.apk_sha).equals(sha)){
+//                return true;
+//            }
+
+            //这里添加从服务器中获取哈希值然后进行对比校验
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+        return false;
     }
 
     @Override
